@@ -1100,7 +1100,8 @@ def evaluate_name_formula(bk, nobj, namex, blah=0, level=0):
                                 res.kind, res.value = oNUM, 0
                             else:
                                 res.kind, res.value = chosen.kind, chosen.value
-                del stack[-nargs:]
+                if nargs:
+                    del stack[-nargs:]
                 spush(res)
         elif opcode == 0x03: #tName
             tgtnamex = unpack("<H", data[pos+1:pos+3])[0] - 1
